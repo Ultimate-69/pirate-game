@@ -38,6 +38,10 @@ public class Interaction : MonoBehaviour
                 animator.SetBool("isMoving", false);
             }
         }
+        else
+        {
+            animator.SetBool("isMoving", false);
+        }
     }
 
     void FixedUpdate()
