@@ -3,6 +3,7 @@ using UnityEngine;
 public class Interaction : MonoBehaviour
 {
     [SerializeField] private Transform boat;
+    [SerializeField] private Animator animator;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
@@ -16,7 +17,15 @@ public class Interaction : MonoBehaviour
 
         if (PlayerInfo.isRowing)
         {
-            transform.position = new Vector3(boat.position.x, boat.position.y + 0.5f, boat.position.z - 3);
+            transform.position = new Vector3(boat.position.x, boat.position.y + 0.5f, boat.position.z - 4);
+            if (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Vertical") > 0)
+            {
+                animator.SetBool("isMoving", true);
+            }
+            else
+            {
+                animator.SetBool("isMoving", false);
+            }
         }
     }
 
