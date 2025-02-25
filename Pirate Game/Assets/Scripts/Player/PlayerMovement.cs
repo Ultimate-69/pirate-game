@@ -30,6 +30,8 @@ public class PlayerMovementTutorial : MonoBehaviour
     float horizontalInput;
     float verticalInput;
 
+    bool canMove = true;
+
     Vector3 moveDirection;
 
     Rigidbody rb;
@@ -47,6 +49,8 @@ public class PlayerMovementTutorial : MonoBehaviour
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f);
 
+        if (!canMove) return;
+
         MyInput();
         SpeedControl();
 
@@ -59,6 +63,7 @@ public class PlayerMovementTutorial : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!canMove) return;
         MovePlayer();
     }
 
