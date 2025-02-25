@@ -6,23 +6,27 @@ using TMPro;
 public class PlayerMovementTutorial : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed;
+    private float moveSpeed;
 
     public float groundDrag;
 
     public float jumpForce;
     public float jumpCooldown;
-    public float airMultiplier;
+    private float airMultiplier;
     bool readyToJump;
 
-    [HideInInspector] public float walkSpeed;
-    [HideInInspector] public float sprintSpeed;
+    public const float walkSpeed = 7;
+    public const float slowSpeed = 2;
+
+    public const float airMultiplierNormal = 0.4f;
+    public const float airMultiplierWater = 0.05f;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
 
     [Header("Ground Check")]
     public float playerHeight;
+    public LayerMask water;
     bool grounded;
 
     public Transform orientation;
@@ -49,6 +53,18 @@ public class PlayerMovementTutorial : MonoBehaviour
         canMove = PlayerInfo.canMove;
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f);
+        bool onWater = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, water);
+
+        if (onWater)
+        {
+            moveSpeed = slowSpeed;
+            airMultiplier = airMultiplierWater;
+        }
+        else
+        {
+            moveSpeed = walkSpeed;
+            airMultiplier = airMultiplierNormal;
+        }
 
         if (!canMove) return;
 
