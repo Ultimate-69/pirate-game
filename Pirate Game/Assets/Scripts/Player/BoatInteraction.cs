@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Interaction : MonoBehaviour
+public class BoatInteraction : MonoBehaviour
 {
     [SerializeField] private Transform boat;
     [SerializeField] private Animator animator;
