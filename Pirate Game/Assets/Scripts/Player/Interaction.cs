@@ -1,10 +1,17 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Interaction : MonoBehaviour
 {
     [SerializeField] private Transform boat;
     [SerializeField] private Animator animator;
-    [SerializeField] private float moveSpeed;
+    [SerializeField] private float normalMoveSpeed;
+    [SerializeField] private float groundMoveSpeed;
+    [SerializeField] private AudioSource rowSound;
+    [SerializeField] private LayerMask water;
+
+    private float moveSpeed;
 
     void Update()
     {
@@ -31,6 +38,10 @@ public class Interaction : MonoBehaviour
             //transform.position = new Vector3(boat.position.x, boat.position.y + 2f, boat.position.z - 4);
             if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
             {
+                if (!rowSound.isPlaying)
+                {
+                    rowSound.Play();
+                }
                 animator.SetBool("isMoving", true);
             }
             else
@@ -48,6 +59,15 @@ public class Interaction : MonoBehaviour
     {
         if (PlayerInfo.isRowing)
         {
+            bool onWater = Physics.Raycast(boat.transform.position, Vector3.down, 1.5f, water);
+            if (onWater)
+            {
+                moveSpeed = normalMoveSpeed;
+            }
+            else
+            {
+                moveSpeed = groundMoveSpeed;
+            }
             if (Input.GetAxisRaw("Horizontal") != 0)
             {
                 boat.transform.Rotate(0, Input.GetAxisRaw("Horizontal"), 0);
