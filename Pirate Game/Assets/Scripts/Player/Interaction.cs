@@ -17,8 +17,8 @@ public class Interaction : MonoBehaviour
             }
             if (PlayerInfo.isRowing)
             {
-                transform.position = new Vector3(boat.position.x, boat.position.y + 2f, boat.position.z - 4);
                 transform.parent = boat;
+                transform.localPosition = new Vector3(0, 15.5f, -40);
             }
             else
             {

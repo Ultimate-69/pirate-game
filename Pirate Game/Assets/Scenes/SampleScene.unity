@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water_Plane
       objectReference: {fileID: 0}
+    - target: {fileID: 6013632388104371084, guid: 6e0965b76baec374d9a8e0c82f9033cb, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -601,8 +605,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 30.61919, y: 16.702158, z: 129.67807}
-  m_Center: {x: -1.077311, y: 7.8510785, z: -1.83918}
+  m_Size: {x: 44.758118, y: 27.291374, z: 144.9457}
+  m_Center: {x: -1.8785095, y: 2.5564837, z: -1.6562009}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,15 +809,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da20090bbd4127744b0e6cf0b29fcc68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
   groundDrag: 5
   jumpForce: 8
   jumpCooldown: 1
-  airMultiplier: 0.4
-  walkSpeed: 0
-  sprintSpeed: 0
   jumpKey: 32
   playerHeight: 2
+  water:
+    serializedVersion: 2
+    m_Bits: 16
   orientation: {fileID: 922543511}
 --- !u!114 &922543513
 MonoBehaviour:
@@ -829,7 +832,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boat: {fileID: 7471709222749054983}
   animator: {fileID: 7471709222749054986}
-  boatRigidBody: {fileID: 7471709222749054984}
   moveSpeed: 10
 --- !u!1 &1065666704
 GameObject:
