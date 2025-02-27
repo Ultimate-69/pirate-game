@@ -4,40 +4,42 @@ using UnityEngine;
 
 public class PlayerMovementTutorial : MonoBehaviour
 {
-    [Header("Movement")]
     private float moveSpeed;
+    private bool readyToJump;
 
-    public float groundDrag;
+    [Header("Movement Options")]
+    [SerializeField] private float groundDrag;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float jumpCooldown;
+    [SerializeField] private float airMultiplier;
+    [SerializeField] Transform orientation;
 
-    public float jumpForce;
-    public float jumpCooldown;
-    private float airMultiplier;
-    bool readyToJump;
+    [SerializeField] private const float walkSpeed = 7;
+    [SerializeField] private const float slowSpeed = 2;
 
-    public const float walkSpeed = 7;
-    public const float slowSpeed = 2;
-
-    public const float airMultiplierNormal = 0.4f;
-    public const float airMultiplierWater = 0.05f;
+    [SerializeField] private const float airMultiplierNormal = 0.4f;
+    [SerializeField] private const float airMultiplierWater = 0.05f;
+    [Space]
 
     [Header("Keybinds")]
-    public KeyCode jumpKey = KeyCode.Space;
+    [SerializeField] private KeyCode jumpKey = KeyCode.Space;
+    [Space]
 
     [Header("Ground Check")]
-    public float playerHeight;
-    public LayerMask water;
-    bool grounded;
+    [SerializeField] private float playerHeight;
+    [SerializeField] private LayerMask water;
+    [Space]
 
-    public Transform orientation;
+    private bool grounded;
 
-    float horizontalInput;
-    float verticalInput;
+    private float horizontalInput;
+    private float verticalInput;
 
-    bool canMove = true;
+    private bool canMove = true;
 
-    Vector3 moveDirection;
+    private Vector3 moveDirection;
 
-    Rigidbody rb;
+    private Rigidbody rb;
 
     private void Start()
     {

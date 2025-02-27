@@ -14,3 +14,4 @@ Cmd: compileSnippet
   error: 1 plat 4 at Assets/Plugins/WaterWorks/Shaders/WaterSSR.hlsl(151): 'ReconstructPosFromDepth': implicit truncation of vector type
  ok=1 outsize=6862
 
+Cmd: shutdown

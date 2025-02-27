@@ -16,3 +16,4 @@ Cmd: compileSnippet
   error: 1 plat 4 at Game/Library/PackageCache/com.unity.render-pipelines.universal/ShaderLibrary/DeclareOpaqueTexture.hlsl(13): gradient instruction used in a loop with varying iteration; partial derivatives may have undefined value
  ok=1 outsize=92774
 
+Cmd: shutdown
